@@ -1,0 +1,351 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color:white;
+    z-index: 0;
+    position: relative;
+    text-align: center;
+}
+
+h1{
+    margin-top:2rem;
+}
+
+::selection{
+    background-color: rgba(0,0,0,0.2);
+}
+
+.modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.8);
+    width: 50%;
+    height:180px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.clock.active,
+.digital_clock.active
+{
+    display: block;
+}
+
+.clocks.unactive{
+    background-color: transparent;
+    width: 30%;
+}
+
+.countdown_container.active{
+    display: flex;
+}
+
+.clocks{
+    width:45%;
+    height:75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:transparent;
+    border-radius: .5rem;
+}
+
+.label{
+    display:inline;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+    background-color:transparent;
+}
+
+#clock_type{
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.clock{
+    display: none;
+    position: relative;
+    height: 8rem;
+    width: 8rem;
+    margin-top:1rem;
+    margin-bottom: 0.4rem;
+    border:0.0625em solid #444;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow:
+    inset 0.125em 0.25em 0.5em #0005,
+    -0.25em -0.5em 0.5em #FFFC,
+    0 0 0.0625em 0.5em #777,
+    0 0 0.0625em 0.5625em #000,
+    0.125em 0.25em 0.5em 0.5em #0004;
+}
+.clock::after{
+    content:"";
+    background-color:#444;
+    border: 2.5px solid #222;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    width:0.689rem;
+    height:0.689rem;
+    transform:translate(-50%, -50%);
+    border-radius:50%;
+    z-index:3;
+}
+
+
+
+.clock .number{
+   --rotation:0;
+   position:absolute;
+   width: 100%;
+   height:100%;
+   text-align: center;
+   transform: rotate(var(--rotation));
+  
+
+}
+
+.clock .numbers .number > span{
+    display:inline-block;
+    height: 10px;
+    width: 1px;
+    background-color:black;
+}
+
+.clock .number1{--rotation:30deg;}
+.clock .number2{--rotation:60deg;}
+.clock .number4{--rotation:120deg;}
+.clock .number5{--rotation:150deg;}
+.clock .number7{--rotation:210deg;}
+.clock .number8{--rotation:240deg;}
+.clock .number10{--rotation:300deg;}
+.clock .number11{--rotation:330deg;}
+
+
+
+.clock .numbers{
+    position:relative;
+    padding:0.1rem;
+    width:100%;
+    height:100%;
+    text-align: center;
+}
+
+.clock .numbers::after,
+.clock .numbers::before{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%)
+}
+
+.clock .numbers::before{
+    content:"12";
+}
+
+.clock .numbers::after{
+    content:"6";
+    bottom:0;
+}
+
+.clock .numbers > .number_row{
+    position: absolute;
+    top:50%;
+    left:0;
+    width:100%;
+    transform:translateY(-50%);
+   
+}
+.clock .numbers > .number_row::before,
+.clock .numbers > .number_row::after{
+    position:absolute;
+    transform: translateY(-50%);
+}
+
+.clock .numbers > .number_row::before{
+    content:"9";
+    left:1%
+}
+
+.clock .numbers > .number_row::after{
+    content:"3";
+    right:0;
+}
+
+.clock .numbers > .tick{
+    position: absolute;
+    height: 100%;
+    top:0;
+    left:40%;
+    width: 0.9rem;
+}
+
+.clock .hand{
+    --rotation:0;
+    position:absolute;
+    bottom:50%;
+    left:50%;
+    width:0.5rem;
+    height:50%;
+    border-top-left-radius:30%;
+    border-top-right-radius: 30%;
+    background-color:rgba(0,0,0,0.8);
+    filter: blur(0) brightness(100%);
+    transform:translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+    transform-origin:bottom;
+    z-index: 2;
+}
+
+.clock .hour{
+    width:0.36rem;
+    height:30%;
+}
+
+.clock .minute{
+    width: 0.256rem;
+    height: 40%;
+}
+
+.clock .sec{
+    width:.209999rem;
+    height: 45%;
+    background-color: red;
+}
+
+
+.digital_clock,
+.countdown_container{
+    display: none;
+    text-align: center;
+    width:100%;
+    height: 100%;
+    background-color:transparent;
+    color: white;
+    border-radius: 1rem;
+    border-radius:4px;
+    padding-top:2px;
+    padding:5px;
+    font-size:22px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
+    font-stretch: extra-condensed;
+    transition-property: all;
+    transition-timing-function: ease-in;
+    transition-duration: .5s;
+    background-color:rgba(255, 255, 255, 1);
+    color: rgba(0,0,0,1);
+}
+
+.digital_clock:hover{
+    filter: blur(50%);
+    background-color:rgba(255, 255, 255, 0.9);
+    color: rgba(0,0,0,1);
+    /*border:rgba(77, 75, 75, 0.4) solid 15px;*/
+}
+
+
+.digital_clock > span:first-child{
+    font-size:16px;
+    display: block;
+    margin-top: 0.5rem;
+    margin-bottom:1.5rem;
+}
+.parent{
+    background-color:transparent;
+    width:52%;
+    height:80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.date_value{
+  height: 17%;
+  width: 80%;
+  border: 3px;
+  padding:1px 5px 1px 5px;
+  margin-top:-.5rem;
+  font-size: medium;
+  font-weight: 500;
+}
+
+input[type="submit"]{
+    padding:1px 10px;
+    height: 20px;
+    background-color:rgba(255, 255, 255, 0.9);
+    border:none;
+    outline: none;
+    font-size:small;
+    margin-top:-8px;
+    z-index:1;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    
+}
+
+.countdown_container{
+    color: #fff;
+    filter: brightness(100%);
+    background-color: rgba(0,0,0,0.9);
+    background-color: transparent;
+    width: 100%;
+    height:80%;
+    padding:0rem;
+    border-radius: .5rem;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.countdown{
+    width:20%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(0,0,0,0.9);
+    display: block;
+    margin-left:.5rem;
+    margin-right:.5rem;
+    font-size:2rem;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+    transition-duration: .5s;
+    border-radius: .3rem;
+    font-weight: 600;
+    padding:0rem;
+}
+
+.countdown > span{
+    display:block;
+    font-size:.54em;
+    margin-top:35px;
+}
+
+.countdown:hover{
+    background-color: rgba(0,0,0,0.9);
+    color:rgba(255, 255, 255, 0.9)
+}
+
+@media screen  and (max-width:600px){
+    .modal{
+        flex-direction: column;
+    }
+}
+

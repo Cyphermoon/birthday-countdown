@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="clock.css">
+    <title>datetime</title>
+</head>
+<body>
+  <h1>This is a birthday countdown</h1>
+  <div class="modal">
+    
+  <div class="clocks">
+    <div class="selection">
+      <select name="clock_type" id="clock_type">
+        <option value="Analog">Analog</option>
+        <option value="Digital">Digital</option>
+      </select>
+    </div>
+    
+
+  <div class="clock">
+      <div class="hand hour"></div>
+      <div class="hand minute"></div>
+      <div class="hand sec"></div>
+
+      <div class="numbers">
+        <span class="number_row"></span>
+        <div class="number number1"><span></span></div>
+        <div class="number number2"><span></span></div>
+        <div class="number number4"><span></span></div>
+        <div class="number number5"><span></span></div>
+        <div class="number number7"><span></span></div>
+        <div class="number number8"><span></span></div>
+        <div class="number number10"><span></span></div>
+        <div class="number number11"><span></span></div>
+
+        <span class="tick"></span>
+        <span class="tick"></span>
+      </div>
+  </div>
+
+    <div class="digital_clock">
+      <span class="date_format">2020-05-34</span>
+      <span class="digital_time">10:20:48 AM</span>
+    </div>
+  </div>
+    <div class="parent">
+    <form class="form">
+      <input type="text" class="date_value" placeholder="YYYY-MM-DD">
+      <input type="submit" value="submit">
+    </form>
+   
+    <div class="countdown_container">
+      <span class="countdown countdown_days"></span>
+      <span class="countdown countdown_hours"></span>
+      <span class="countdown countdown_minutes"></span>
+      <span class="countdown countdown_seconds"></span>
+    </div>
+    </div>
+  </div>
+  </div>
+  <script src="clock.js"></script>
+  </body>
+</html>
