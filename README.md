@@ -1,3 +1,12 @@
-# birthday-countdown
+# Birthday Countdown
 
-Just type your birthday into the input field and the number of days remaining to your birthday will be calculated
+This app calculates the days remaining to your birthday based on an input field value.
+
+## Features
+- Analog Clock
+- Digital Clock 
+
+## Technologies
+- HTML
+- CSS
+- Javascript
